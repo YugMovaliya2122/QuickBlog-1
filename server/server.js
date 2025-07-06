@@ -23,6 +23,16 @@ const app = express();
 await connectDB();
 // Enable Cross-Origin Resource Sharing (CORS) for all routes
 app.use(cors());
+const allowedOrigins = [
+  "https://quickblog-1-fronted-bxra.onrender.com"// replace with actual frontend URL
+                 // for development
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,  // if using cookies/auth headers
+}));
+
 app.use(express.json());
 //Yes, Yug — basically, CORS allows two different domains to connect and share data safely, but with some rules. ✅
 //it helps to connect beckend and frontend securaly
